@@ -9,46 +9,51 @@ import java.util.Random;
  * @version SP2 CWK3 2014
  */
 public class Customer {
-	private static final int NUM_OF_FLOORS = Building.getNumOfFloors();
 	private static int destinationFloor, randomValue;
-	private static int currentFloor = 0;
+	private static int startFloor;
 
 	/**
-	 * Creates an instance of a new customer. Assigns a random destination
-	 * floor.
+	 * Constructs a Customer object. Assigns a random start floor and a random
+	 * destination floor by calling on <code>setRandom()</code> to generate
+	 * numbers and calling on <code>setStartFloor()</code> and
+	 * <code>setDestinationFloor</code>.
 	 */
 	public Customer() {
+		setStartFloor(setRandom());
 		setDestinationFloor(setRandom());
 	}
 
 	/**
-	 * Mutator method for the current floor. It increments by one all floors
-	 * above the number 12.
+	 * Sets the floor the customer is waiting at. It increments by one all
+	 * floors above the number 12.
+	 * 
+	 * @param num
+	 *            assigned to <code>startFloor</code>
 	 */
-	public static void setCurrentFloor(int num) {
-		// As floor 13 does not exist this is increased by one to floor 14.
-		currentFloor = num;
-		if (currentFloor == 13) {
-			currentFloor = currentFloor + 1;
+	public static void setStartFloor(int num) {
+		startFloor = num;
+		if (startFloor == 13) {
+			startFloor = startFloor + 1;
 		}
 	}
 
 	/**
-	 * Accessor method for the current floor
+	 * Accessor method for the floor the customer is waiting at.
 	 * 
-	 * @return currentFloor
+	 * @return <code>int startFloor</code>
 	 */
-	public static int getCurrentFloor() {
-		return currentFloor;
+	public static int getStartFloor() {
+		return startFloor;
 	}
 
 	/**
-	 * Mutator method for the destination floor. It increments by one all floors
-	 * above the number 12.
+	 * Sets the destination floor. It increments by one all floors above the
+	 * number 12.
+	 * 
+	 * @param num
+	 *            assigned to <code>destinationFloor</code>
 	 */
 	public static void setDestinationFloor(int num) {
-		// sets destinationFloor to num.
-		// As floor 13 does not exist this is increased by one to floor 14.
 		destinationFloor = num;
 		if (destinationFloor == 13) {
 			destinationFloor = destinationFloor + 1;
@@ -65,24 +70,15 @@ public class Customer {
 	}
 
 	/**
-	 * Accessor method for the number of floors
-	 * 
-	 * @return NUM_OF_FLOORS
-	 */
-	public static int getNUM_OF_FLOORS() {
-		return NUM_OF_FLOORS;
-	}
-
-	/**
 	 * This method uses the Random class to create a random number that is less
 	 * than the number of floors in the building and allocates it to the
 	 * destination floors
 	 * 
-	 * @return a random value
+	 * @return <code>int randomValue</code>
 	 */
 	public int setRandom() {
 		Random rand = new Random();
-		randomValue = rand.nextInt(getNUM_OF_FLOORS());
+		randomValue = rand.nextInt(Building.getNumOfFloors());
 		return randomValue;
 	}
 

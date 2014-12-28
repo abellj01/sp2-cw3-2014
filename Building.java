@@ -3,7 +3,9 @@ package elevatorAy;
 import java.util.Scanner;
 
 /**
- * The Building class implements a simple elevator
+ * The Building class implements a simple elevator with given number of
+ * customers and floors. <code>Main</code> simulates the running of the
+ * elevator.
  * 
  * @author Nazia Ayeni and Aymar Bell Jr.
  * @version SP2 CWK3 2014
@@ -15,14 +17,14 @@ public class Building {
 	/**
 	 * Creates a building with a number of floors and customers
 	 * 
-	 * @param num
-	 *            the number of floors
-	 * @param num2
-	 *            the number of customers
+	 * @param floor
+	 *            Used for <code>numOfFloors</code>
+	 * @param customer
+	 *            Used for <code>numberOfCustomers</code>
 	 */
-	public Building(int num, int num2) {
-		num = numOfFloors;
-		num2 = numberOfCustomers;
+	public Building(int floor, int customer) {
+		floor = numOfFloors;
+		customer = numberOfCustomers;
 	}
 
 	/**
@@ -39,7 +41,8 @@ public class Building {
 				numOfFloors = Integer.parseInt(inputOne);
 				validInput1 = true;
 			} else {
-				System.out.println("Incorrect input! Must be integer value. Please try again");
+				System.out
+						.println("Incorrect input! Must be integer value. Please try again");
 				System.out
 						.println("Please enter the number of floors in the building");
 			}
@@ -53,7 +56,8 @@ public class Building {
 				numberOfCustomers = Integer.parseInt(inputTwo);
 				validInput2 = true;
 			} else {
-				System.out.println("Incorrect input! Must be integer value. Please try again");
+				System.out
+						.println("Incorrect input! Must be integer value. Please try again");
 				System.out
 						.println("Please enter the number of customers in the building");
 			}
@@ -73,7 +77,7 @@ public class Building {
 	/**
 	 * Accessor method for the number of floors
 	 * 
-	 * @return numOfFloors
+	 * @return <code>int numOfFloors</code>
 	 */
 	public static int getNumOfFloors() {
 		return numOfFloors;
@@ -82,23 +86,46 @@ public class Building {
 	/**
 	 * Accessor method for the number of customers
 	 * 
-	 * @return numOfCustomers
+	 * @return <code>int numberOfCustomers</code>
 	 */
 	public static int getNumberOfCustomers() {
 		return numberOfCustomers;
 	}
 
 	/**
-	 * Checks if input is an integer
+	 * Sets the number of floors in the building
+	 * 
+	 * @param num
+	 *            assigned to <code>numOfFloors</code>
+	 */
+	public static void setNumOfFloors(int num) {
+		numOfFloors = num;
+	}
+
+	/**
+	 * Sets the number of customers in the building
+	 * 
+	 * @param num
+	 *            assigned to <code>numberOfCustomers</code>
+	 */
+	public static void setNumberOfCustomers(int num) {
+		numberOfCustomers = num;
+	}
+
+	/**
+	 * Checks if String <code>s</code> can be parsed as an integer
 	 * 
 	 * @param s
-	 * @return true
+	 * @throws NumberFormatException
+	 *             if cannot be parsed.
+	 * @return boolean
 	 */
 	public static boolean isInteger(String s) {
 		try {
 			Integer.parseInt(s);
 		} catch (NumberFormatException e) {
-			System.out.println("Incorrect input! Must be integer value. Please try again");
+			System.out
+					.println("Incorrect input! Must be integer value. Please try again");
 		}
 		return true;
 	}
